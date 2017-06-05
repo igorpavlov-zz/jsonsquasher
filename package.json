@@ -1,0 +1,34 @@
+{
+  "name": "jsonsquasher",
+  "version": "0.2.0",
+  "description": "Lightweight and efficient JSON compressor",
+  "main": "build/jsonsquasher.js",
+  "scripts": {
+    "test": "node -e 'console.log(require(\"./tests/quicktest.js\")())'",
+    "test-mutation": "node -e 'console.log(require(\"./tests/quicktest.js\")({mutateJSON:true}))'",
+    "build": "npm test && gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorpavlov/jsonsquasher.git"
+  },
+  "keywords": [
+    "jsonsquasher",
+    "json",
+    "compressor"
+  ],
+  "author": "Igor Pavlov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/igorpavlov/jsonsquasher/issues"
+  },
+  "homepage": "https://github.com/igorpavlov/jsonsquasher#readme",
+  "devDependencies": {
+    "colors": "^1.1.2",
+    "gulp": "^3.9.1",
+    "gulp-minify": "0.0.15",
+    "gulp-strip-debug": "^1.1.0",
+    "gulp-uglify": "^2.1.2",
+    "jsoncomp": "^1.6.1"
+  }
+}
