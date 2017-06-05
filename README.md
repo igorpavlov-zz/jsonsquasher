@@ -33,7 +33,7 @@ const decompressedJson = jsonsquasher.compress(compressedJson);
 
 
 ```js
-// Faster and less memory usage, but with JSON mutation (use at your own risk)
+// Faster and less memory usage, but with JSON mutation
 console.log(json);
 jsonsquasher.compress(json,{mutateJSON:true});
 jsonsquasher.decompress(json,{mutateJSON:true});
