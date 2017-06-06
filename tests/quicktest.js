@@ -50,10 +50,10 @@ module.exports = function(options) {
       if(jsonOriginalSize!==jsonDecompressedSize){
         throw("Test failed.");
       }
+      console.log("")
     }
   });
   console.log(colors.green("Success. All tests passed!"));
-
-  return "End of test.";
+  return "";
 
 }
