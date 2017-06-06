@@ -25,31 +25,27 @@ module.exports = function(options) {
     if(!file.match(/^!/)){
       var jsonOriginal = require(dir+'/'+file);
       fs.writeFileSync(dirOriginal+'/'+file,JSON.stringify(jsonOriginal, null, 2));
-      console.log(colors.magenta("======="));
-      console.log("Testing " + file + " compression...");
+      console.log(colors.magenta(file));
       var jsonOriginalSize = JSON.stringify(jsonOriginal).length;
-      console.log("Original size: " + jsonOriginalSize);
-      console.log("### jsonsquasher");
-      console.log("--- Compressing...");
+      console.log("Original size:            " + jsonOriginalSize + " chars");
       var startAlgorithmTime = new Date();
       var jsonCompressed = jsonsquasher.compress(jsonOriginal,options);
       var endAlgorithmTime = new Date();
       var jsonCompressedSize = JSON.stringify(jsonCompressed).length;
-      console.log("Compression time: " + (endAlgorithmTime - startAlgorithmTime) + "ms");
-      console.log("Compression final size: " + jsonCompressedSize);
+      console.log("Compression time:         " + (endAlgorithmTime - startAlgorithmTime) + " ms");
+      //console.log("Compression final size:   " + jsonCompressedSize);
       var compressionRate = 100-Math.round(jsonCompressedSize/jsonOriginalSize*100);
       if(compressionRate>0){
-        console.log("Compression: " + compressionRate + "%");
+        console.log("Compression:              " + compressionRate + " %");
       } else {
-        console.log(colors.yellow("Warning: Compression: " + compressionRate + "%"));
+        console.log(colors.yellow("Compression:              " + compressionRate + " %"));
       }
       fs.writeFileSync(dirCompressed+'/'+file,JSON.stringify(jsonCompressed, undefined, 2));
-      console.log("--- Decompressing...");
       var startAlgorithmTime = new Date();
       var jsonDecompressed = jsonsquasher.decompress(jsonCompressed,options);
       var endAlgorithmTime = new Date();
       var jsonDecompressedSize = JSON.stringify(jsonDecompressed).length;
-      console.log("Decompression time: " + (endAlgorithmTime - startAlgorithmTime) + "ms");
+      console.log("Decompression time:       " + (endAlgorithmTime - startAlgorithmTime) + " ms");
       fs.writeFileSync(dirDecompressed+'/'+file,JSON.stringify(jsonDecompressed, undefined, 2));
       if(jsonOriginalSize!==jsonDecompressedSize){
         throw("Test failed.");
