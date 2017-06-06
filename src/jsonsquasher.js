@@ -94,7 +94,6 @@
     if(!isArray(x)){
       return false;
     }
-    var keys = {};
     for(var i = 0; i < x.length; i++){
       var child = x[i];
       if(!isObject(child)){
