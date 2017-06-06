@@ -28,7 +28,7 @@ Use
 // Compression
 const compressedJson = jsonsquasher.compress(json);
 // Decompression
-const decompressedJson = jsonsquasher.compress(compressedJson);
+const decompressedJson = jsonsquasher.decompress(compressedJson);
 ```
 
 
